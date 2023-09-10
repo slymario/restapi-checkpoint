@@ -29,7 +29,7 @@ module.exports = new Database()
 
 
 // GET: Return all users
-app.get('/users', async (req, res) => {
+app.get('/user', async (req, res) => {
     try {
         const users = await User.find();
         res.json(users);
@@ -39,7 +39,7 @@ app.get('/users', async (req, res) => {
     });
     
     // POST: Add a new user to the database
-app.post('/users', async (req, res) => {
+app.post('/user', async (req, res) => {
         try {
         const newUser = new User(req.body);
         const savedUser = await newUser.save();
@@ -50,7 +50,7 @@ app.post('/users', async (req, res) => {
     });
 
     // PUT: Edit a user by ID
-app.put('/users/:id', async (req, res) => {
+app.put('/user/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
@@ -61,7 +61,7 @@ app.put('/users/:id', async (req, res) => {
     });
     
     // DELETE: Remove a user by ID
-app.delete('/users/:id', async (req, res) => {
+app.delete('/user/:id', async (req, res) => {
         const { id } = req.params;
         try {
         await User.findByIdAndDelete(id);
